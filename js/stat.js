@@ -42,6 +42,9 @@ window.renderStatistics = function (ctx, names, times) {
   var indent = 50;
   var initialX = 155;
   var initialY = 250;
+  var timesPadding = 165;
+  var namesPadding = 8;
+  var horizontalPadding = 5;
 
   // рисование столбиков
   for (i = 0; i < times.length; i++) {
@@ -58,7 +61,8 @@ window.renderStatistics = function (ctx, names, times) {
   for (i = 0; i < names.length; i++) {
     ctx.font = '11px PT Mono';
     ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-    ctx.fillText(names[i], (barWidth + indent) * i + initialX + 5, initialY + 8);
-    ctx.fillText(Math.floor(times[i]), (barWidth + indent) * i + initialX + 5, initialY - 165);
+    var horizontalIndent = (barWidth + indent) * i + initialX + horizontalPadding;
+    ctx.fillText(names[i], horizontalIndent, initialY + namesPadding);
+    ctx.fillText(Math.floor(times[i]), horizontalIndent, initialY - timesPadding);
   }
 };
